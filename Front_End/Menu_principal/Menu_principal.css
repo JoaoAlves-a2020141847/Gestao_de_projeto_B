@@ -1,0 +1,26 @@
+body{
+    color: #ebebeb;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    grid-template-rows: auto auto auto auto auto auto;
+    text-align: center;
+}
+
+.titulo{
+    grid-row: 1/1;
+    grid-column: 1/6; 
+    border-radius: 0px 0px 59px 59px;
+    background-image: url(./Imagens/Fundo_Menu.png);
+    height: 80px;
+}
+
+h1{
+    color: white; 
+    font-size: 30px; 
+    font-family: Segoe UI; 
+    font-weight: 700; 
+    text-transform: capitalize;
+}

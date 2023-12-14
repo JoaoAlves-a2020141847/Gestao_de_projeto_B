@@ -3,11 +3,14 @@ body{
 }
 
 .titulo{
-    color: black; 
+    color: white; 
     font-size: 30px; 
     font-family: Segoe UI; 
     font-weight: 700; 
     text-transform: capitalize; 
     word-wrap: break-word;
     text-align: center;
+    border-radius: 0px 0px 59px 59px;
+    background-image: url(./Imagens/Fundo_Menu.png);
+    height: 100px;
 }

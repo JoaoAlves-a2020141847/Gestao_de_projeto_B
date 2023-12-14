@@ -1,3 +1,13 @@
 body{
     color: #ebebeb;
 }
+
+.titulo{
+    color: black; 
+    font-size: 30px; 
+    font-family: Segoe UI; 
+    font-weight: 700; 
+    text-transform: capitalize; 
+    word-wrap: break-word;
+    text-align: center;
+}

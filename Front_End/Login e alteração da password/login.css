@@ -5,10 +5,29 @@
     box-sizing: border-box;
 }
 
-.Fundo
+body
 {
-    display: flex;  
-    height: 30%;
-    width: 30%;
-    border: 1px solid"
+    background-image: url(./imagens/fundo.png);
+}
+
+.Logo
+{
+    width: 200px; 
+    height: 200px; 
+    left: 567px; 
+    top: 421px; 
+    position: absolute; 
+}
+
+.Fundo_Simbolo
+{
+    background: rgba(255, 255, 255, 0.70); 
+    width: 60%;
+    height: 60%;
+    display: block;
+    position: relative;
+    margin-left: 20%;
+    margin-top: 10%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }

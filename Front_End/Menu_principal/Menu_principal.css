@@ -1,26 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 body{
     color: #ebebeb;
 }
 
 .grid-container{
     display: grid;
-    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    grid-template-columns: repeat(6, 16.6%);
     grid-template-rows: auto auto auto auto auto auto;
-    text-align: center;
 }
 
 .titulo{
     grid-row: 1/1;
-    grid-column: 1/6; 
-    border-radius: 0px 0px 59px 59px;
+    grid-column: 1/-1; 
+    border-radius: 0px 0px 40px 40px;
     background-image: url(./Imagens/Fundo_Menu.png);
-    height: 80px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90px;
+    width: 100%;
+    overflow: hidden; 
+    text-align: center;
 }
 
-h1{
+.icon{
+    grid-row: 1/1;
+    grid-column: 1/2;
+    float: left;
+    height: 80px;
+    margin-left: 3vw;
+    margin-top: 1vw;
+}
+
+.titulo_texto{
+    grid-row: 1/1;
+    grid-column: 3/5;
     color: white; 
     font-size: 30px; 
     font-family: Segoe UI; 
     font-weight: 700; 
     text-transform: capitalize;
+    align-self: center;
+    justify-self: center;
 }

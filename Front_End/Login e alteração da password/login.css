@@ -5,10 +5,75 @@
     box-sizing: border-box;
 }
 
-.Fundo
+body
 {
-    display: flex;  
-    height: 30%;
+    background-image: url(./imagens/fundo.png);
+}
+
+.Logo
+{
+    width: 200px; 
+    height: 200px; 
+    display: block;
+    margin: auto;
+    margin-top: 30%;
+    display: block;
+}
+
+.Fundo_Simbolo
+{
+    background: rgba(255, 255, 255, 0.70); 
     width: 30%;
-    border: 1px solid"
+    float: left;
+    height: 60%;
+    margin-left: 20%;
+    margin-top: 10%;
+    border-top-left-radius: 50px;
+    position: relative;
+}
+
+.Fundo_Escrita
+{
+    background: rgba(255, 255, 255, 0.40); 
+    width: 40%;
+    float: left;
+    height: 60%;
+    margin-top: 10%;
+    border-top-right-radius: 50px;
+
+    display: ;
+    align-items: center;
+    justify-content: center;
+}
+
+h1
+{
+    text-align: center;
+    position: relative;
+    color: black; 
+    font-size: 50px; 
+    font-family: Segoe UI; 
+    font-weight: 700; 
+    text-transform: capitalize; 
+    word-wrap: break-word
+}
+
+input[type=text]
+{
+    height: 53px;
+    width: 418px;
+    margin: 5%;
+    background: #D9D6D6; 
+    border-radius: 27px; 
+    border: 1px #707070 solid;
+}
+
+.Butão
+{
+    width: 418px; 
+    height: 53px;
+    background: #55B20E; 
+    border-radius: 10px; 
+    border: 1px solid;
+    margin: 5%;
 }

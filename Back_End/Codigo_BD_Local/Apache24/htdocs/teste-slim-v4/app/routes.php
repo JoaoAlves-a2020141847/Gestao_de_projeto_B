@@ -23,6 +23,15 @@ use App\Application\Actions\Gymlog\increaseSeriesExeAction;
 
 #ap3_pi2 TERMINOU
 
+#GESTAO
+use App\Application\Actions\GP2324\registoBombeiro;
+use App\Application\Actions\GP2324\registoUtente;
+use App\Application\Actions\GP2324\authBombeiro;
+use App\Application\Actions\GP2324\authUtente;
+use App\Application\Actions\GP2324\fazPedidoUtente;
+#GESTAO TERMINOU
+
+
 use App\Application\Actions\Users\LoginAction;
 
 use Psr\Http\Message\ResponseInterface as Response;
@@ -57,6 +66,15 @@ return function (App $app) {
     $app->delete('/remExePlanUser',removeExePlanUserAction::class); 
     $app->patch('/increaseSeries',increaseSeriesExeAction::class);
     #ap3_pi2 TERMINOU
+
+    #GESTAO
+    $app->post('/regBombeiro',registoBombeiro::class);
+    $app->post('/regUtente',registoUtente::class);
+    $app->patch('/authBombeiro',authBombeiro::class);
+    $app->patch('/authUtente',authUtente::class);
+    $app->post('/fazPedidoUtente',fazPedidoUtente::class);
+    #GESTAO TERMINOU
+
 
     // Endpoint em que apenas é devolvida uma mensagem em texto 
     // mas processado por uma classe separada

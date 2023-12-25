@@ -27,6 +27,10 @@ class regAction extends Action
         $json = $this->request->getBody()->getContents();
         $body = $this->response->getBody();
         $data = json_decode($json, true); // dados recebidos via JSON
+        $this->response->getBody()->write(json_encode($data));
+        return $this->response->withHeader('Content-Type', 'application/json');
+
+        
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $STH = $this->link->prepare("SELECT * From user where u_username=?;");
         $STH->execute(array($data['username']));

@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 
 use \PDO;
 
-class registoBombeiro extends Action
+class registoUtente extends Action
 {
     private PDO $link;
 
@@ -28,10 +28,10 @@ class registoBombeiro extends Action
         $body = $this->response->getBody();
         $data = json_decode($json, true);
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-        $STH = $this->link->prepare("SELECT * From pessoa p , bombeiro b 
-                                    where p.pe_id=b.pe_id 
-                                    and pe_email=? or pe_contacto=? or b_user=? ;");
-        $STH->execute(array($data['email'],$data['contacto'],$data['user']));
+        $STH = $this->link->prepare("SELECT * From pessoa p , utente u
+                                    where p.pe_id=u.pe_id 
+                                    and pe_email=? or pe_contacto=? or u_numcc=? ;");
+        $STH->execute(array($data['email'],$data['contacto'],$data['cc']));
         $STH->setFetchMode(PDO::FETCH_OBJ);
         $records = $STH->fetch();
         if(!empty($records)){
@@ -48,10 +48,10 @@ class registoBombeiro extends Action
                 $data['contacto'],$data['morada'],$data['codigopostal']))){
                 $pessoaId = $this->link->lastInsertId();
                 
-                $STH = $this->link->prepare("INSERT INTO bombeiro (pe_id,b_funcao,b_posicao,b_admin,b_estado,b_user) 
-                                        values (?,?,?,?,?,?);");
-                if($STH->execute(array($pessoaId,$data['funcao'],$data['posicao'],
-                    $data['admin'],$data['estado'],$data['user']))){
+                $STH = $this->link->prepare("INSERT INTO utente (pe_id,u_numcc,u_datavalidade,u_estado) 
+                                        values (?,?,?,?);");
+                if($STH->execute(array($pessoaId,$data['cc'],$data['validade'],
+                    $data['estado']))){
                     $res["err"] = 0;
                     $this->response->getBody()->write(json_encode($res));
                     return $this->response->withHeader('Content-Type', 'application/json');

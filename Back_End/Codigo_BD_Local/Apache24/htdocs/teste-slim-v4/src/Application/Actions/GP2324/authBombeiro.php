@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Application\Actions\Gymlog;
+namespace App\Application\Actions\GP2324;
 
 use App\Application\Actions\Action;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 
 use \PDO;
 
-class logAction extends Action
+class authBombeiro extends Action
 {
     private PDO $link;
 
@@ -27,22 +27,22 @@ class logAction extends Action
         $json = $this->request->getBody()->getContents();
         $body = $this->response->getBody();
         $data = json_decode($json, true); // dados recebidos via JSON
-        $STH = $this->link->prepare("SELECT u_username, u_name, u_photo , u_pass From user where u_username=?;");
-        $STH->execute(array($data['username']));
+        $STH = $this->link->prepare("SELECT p.pe_id, pe_senha From pessoa p, bombeiro b where p.pe_id=b.pe_id and b_user=?;");
+        $STH->execute(array($data['user']));
         
         $records = $STH->fetch();
         if(!empty($records)){
-            if(password_verify( $data['password'] , $records["u_pass"])){
-                unset($records["u_pass"]);
+            if(password_verify( $data['password'] , $records["pe_senha"])){
+                unset($records["pe_senha"]);
                 
-                $token=md5((string)time()).md5((string)$data['username']);
+                $token=md5((string)time()).md5((string)$data['user']);
 
-                $STH = $this->link->prepare("UPDATE user
+                $STH = $this->link->prepare("UPDATE pessoa
                                             SET 
-                                                u_token 	= 	?
-                                            WHERE u_username = ?;");
-                if($STH->execute(array($token,$data['username']))){
-                    $records["u_token"] = $token;
+                                                pe_token 	= 	?
+                                            WHERE pe_id = ?;");
+                if($STH->execute(array($token,$records["pe_id"]))){
+                    $records["pe_token"] = $token;
                     $res["user"] = array();
                     array_push($res["user"],$records);
                     $res["err"] = 0;

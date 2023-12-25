@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Application\Actions\Gymlog;
+namespace App\Application\Actions\GP2324;
 
 use App\Application\Actions\Action;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 
 use \PDO;
 
-class addExePlanUserAction extends Action
+class fazPedidoUtente extends Action
 {
     private PDO $link;
 
@@ -27,7 +27,10 @@ class addExePlanUserAction extends Action
         $json = $this->request->getBody()->getContents();
         $body = $this->response->getBody();
         $data = json_decode($json, true); // dados recebidos via JSON
-        $uid = $this->request->getAttribute("uid");
+        $peid = $this->request->getAttribute("peid");
+
+        $this->response->getBody()->write(json_encode($peid));
+        return $this->response->withHeader('Content-Type', 'application/json');
         $STH = $this->link->prepare("SELECT COUNT(*) AS 'count'  FROM exercise WHERE e_id=?");
         $STH->execute(array($data["eid"]));
         $contagem = $STH->fetchAll();

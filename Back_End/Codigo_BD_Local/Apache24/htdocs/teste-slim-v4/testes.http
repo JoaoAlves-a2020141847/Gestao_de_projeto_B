@@ -1,0 +1,142 @@
+// URL base da API
+@apiurl = http://127.0.0.1:8080
+@auth-token = 230a0310b47d4699a691dff8fd8d7b4625ab9b241e743bad008520d36120c053
+
+### Uma rota que não existe - devolverá 404 
+GET {{apiurl}}/test HTTP/1.1
+
+### Uma rota de teste - GET
+GET {{apiurl}}/hello HTTP/1.1
+
+### Uma rota de teste - GET
+GET {{apiurl}}/hello2 HTTP/1.1
+
+### Uma rota de teste - GET
+GET {{apiurl}}/helloget/Vasco HTTP/1.1
+Authorization : {{auth-token}}
+
+#AP3_PI2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+###
+POST {{apiurl}}/reg HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "name":"Lara Sousa",
+    "username":"Lara",
+    "password":"1234",
+    "photo":"https://i.pinimg.com/236x/7c/df/e8/7cdfe8e1e683e217b52bda0793d77a36.jpg"
+
+}
+
+###
+PATCH {{apiurl}}/log HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "Extrel",
+    "password": "1234"
+}
+
+###
+PATCH {{apiurl}}/logOut HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+###
+GET {{apiurl}}/getExer HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+###
+GET {{apiurl}}/getPlanUser HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+###
+POST {{apiurl}}/addPlanUser HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+{
+    "name":"Aquele Mesmo",
+    "date":"2023-06-26"
+}
+
+###
+DELETE {{apiurl}}/remPlan HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+{
+    "pid":2
+}
+
+###
+GET {{apiurl}}/getExeUser?pid=271 HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+###
+POST {{apiurl}}/addExePlanUser HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+{
+    "pid":272,
+    "eid":3,
+    "series":20
+}
+
+###
+PATCH {{apiurl}}/increaseSeries HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+{
+    "pid":271,
+    "eid":2
+}
+
+
+###
+DELETE  {{apiurl}}/remExePlanUser HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+{
+    "pid":"272",
+    "eid":"2"
+}
+
+#AP3_PI2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TERMINA 
+###
+POST {{apiurl}}/hellopost HTTP/1.1
+Authorization : {{auth-token}}
+Content-Type: application/json
+
+{ 
+    "name": "Vasco"
+}
+
+###
+POST {{apiurl}}/user/login HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "username": "gil",
+    "password": "gil"
+}
+
+
+### 
+GET {{apiurl}}/testebd HTTP/1.1
+//Authorization : {{auth-token}}
+
+### 
+OPTIONS {{apiurl}}/testebd HTTP/1.1
+//Authorization : {{auth-token}}
+
+###
+GET {{apiurl}}/testebd2 HTTP/1.1
+Authorization : {{auth-token}}

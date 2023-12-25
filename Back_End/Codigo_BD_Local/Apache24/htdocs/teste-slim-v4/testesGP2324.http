@@ -1,8 +1,8 @@
 // URL base da API
 @apiurl = http://127.0.0.1:8080
-@auth-token = 230a0310b47d4699a691dff8fd8d7b4625ab9b241e743bad008520d36120c053
+@auth-token = 97831a1f1c59f9d0baddc4d9cecbaeaeff053a5c93f1e8cc6dd8e9a6f74fe903
 
-
+###
 POST {{apiurl}}/regBombeiro HTTP/1.1
 Content-Type: application/json
 
@@ -15,9 +15,63 @@ Content-Type: application/json
     "posicao":"nivel 1",
     "funcao":"entry-fragger",
     "admin":0,
-    "estado":"Ébrio",
-    "email":"lara@gmail.com"
+    "estado":1,
+    "email":"lara@gmail.com",
+    "morada":"Lisboa",
+    "codigopostal":"6400-241"
     
+}
+
+
+###
+POST {{apiurl}}/regUtente HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "name":"Tomás Bogalho",
+    "cc":311928029,
+    "validade":"2023/12/25",
+    "estado":0,
+    "password":"1234",
+    "contacto":"916848323",
+    "email":"bogalho11@gmail.com",
+    "morada":"alcobaça, Leiria",
+    "codigopostal":"2460-241"
+    
+}
+
+###
+PATCH {{apiurl}}/authBombeiro HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "user":"Lara",
+    "password":"1234"
+
+}
+
+###
+PATCH {{apiurl}}/authUtente HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "cc":311928029,
+    "password":"1234"
+
+}
+
+###
+POST {{apiurl}}/fazPedidoUtente HTTP/1.1
+Content-Type: application/json
+Authorization : {{auth-token}}
+
+{
+
+    "ola":"ole"
+
 }
 
 

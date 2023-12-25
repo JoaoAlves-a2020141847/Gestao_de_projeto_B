@@ -33,7 +33,8 @@ class AuthMiddleware implements Middleware
     {
         
         // A lista de endpoints para os quais não é necessário estar autenticado
-        $public_addresses = array('/hello', '/hello2', '/user/login', '/newuser','/reg','/log','/testebd');
+        $public_addresses = array('/hello', '/hello2', '/user/login', '/newuser','/reg','/log','/testebd'
+                                    ,'/regBombeiro','/regUtente','/authBombeiro','/authUtente');
 
         // Para lidar com o CORS Preflight
         if($request->getMethod() == 'OPTIONS') {
@@ -61,7 +62,7 @@ class AuthMiddleware implements Middleware
                 $tokenAuth = $headers[0];    
 
                 // utilizando os tokens individuais para cada utilizador
-                $sth = $this->pdo->prepare("SELECT U_ID FROM user WHERE U_TOKEN = ?");
+                $sth = $this->pdo->prepare("SELECT PE_ID FROM pessoa WHERE PE_TOKEN = ?");
                 $sth->bindParam(1, $tokenAuth);
                 $sth->execute();
                 $usr = $sth->fetchAll();
@@ -75,7 +76,7 @@ class AuthMiddleware implements Middleware
                 } else {
                     // O token é válido. Vamos obter o ID do utilizador e passá-lo adiante
                     
-                    $request = $request->withAttribute('uid', $usr[0]["U_ID"]);
+                    $request = $request->withAttribute('peid', $usr[0]["PE_ID"]);
                     $response = $handler->handle($request);
                     return $response; 
                 }
